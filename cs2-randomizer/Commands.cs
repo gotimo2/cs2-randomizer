@@ -17,7 +17,6 @@ namespace cs2_randomizer
             _logger = logger;
         }
 
-
         [ConsoleCommand("enable_randomizer", "Enables the randomizer plugin")]
         public void EnableRandomizer(CCSPlayerController? player, CommandInfo commandInfo)
         {

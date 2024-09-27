@@ -16,6 +16,7 @@ public class Plugin : BasePlugin
     {
         Logger.LogInformation($"CS2 Randomizer {(hotReload ? "hot " : "")}Loaded !");
         RegisterConsoleCommandAttributeHandlers(new Commands(Logger));
+        RegisterAllAttributes(new Events(Logger));
         base.Load(hotReload);
     }
 

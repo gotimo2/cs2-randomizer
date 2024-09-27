@@ -1,5 +1,6 @@
 ﻿using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,15 @@ namespace cs2_randomizer
 {
     public class Events
     {
+        private readonly ILogger _logger;
+        public Events(ILogger logger) { 
+            _logger = logger;
+        }
+
         [GameEventHandler]
-        public HookResult OnRoundStart(EventRoundStart gameEvent)
+        public HookResult OnRoundStart(EventRoundStart gameEvent, GameEventInfo eventInfo)
         {
+            _logger.LogDebug("Round start");
             if (Plugin.RandomizerEnabled)
             {
                 GivePlayersRandomWeapons();
@@ -29,8 +36,9 @@ namespace cs2_randomizer
             foreach (var player in players)
             {
                 var weapon = weapons[random.Next(weapons.Count - 1)];
-                player.RemoveAllItemsOnNextRoundReset = true;
                 player.GiveNamedItem(weapon);
+                player.RemoveWeapons();
+                player.GiveNamedItem("weapon_knife");
             }
 
         }
