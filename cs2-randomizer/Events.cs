@@ -39,8 +39,10 @@ namespace cs2_randomizer
 
                 if (player.TeamNum == 3) //CT side
                 {
-                    _logger.LogInformation("Giving defuser to {1}", player.PlayerName);
-                    player.GiveNamedItem(Constants.armorHelmet_weaponName);
+                    if (random.Next(0, 2) == 1)
+                    {
+                        giveDefuser(player);
+                    }
                 }
                 if (player.TeamNum == 2) //T side
                 {
@@ -49,15 +51,16 @@ namespace cs2_randomizer
                     }
                 } 
                 var weapon = weapons[random.Next(weapons.Count - 1)];
+                RollArmor(player);
                 player.GiveNamedItem(weapon);
                 player.GiveNamedItem(Constants.knife_weaponName);
             }
 
         }
 
-        private void giveDefuser(CCSPlayerPawn pawn)
+        private void giveDefuser(CCSPlayerController playerController)
         {
-            var itemServices = new CCSPlayer_ItemServices(pawn.ItemServices.Handle);
+            var itemServices = new CCSPlayer_ItemServices(playerController.Pawn.Value.ItemServices.Handle);
             itemServices.HasDefuser = true;
         }
 
