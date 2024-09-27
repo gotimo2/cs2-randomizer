@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+      - name: navigate to folder
+        run: cd cs2-randomizer
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
