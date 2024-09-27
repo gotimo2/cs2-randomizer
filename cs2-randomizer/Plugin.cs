@@ -10,7 +10,7 @@ public class Plugin : BasePlugin
 
     public override string ModuleVersion => "0.5";
 
-    public static bool RandomizerEnabled = false;
+    public static bool RandomizerEnabled = true;
 
     public override void Load(bool hotReload)
     {

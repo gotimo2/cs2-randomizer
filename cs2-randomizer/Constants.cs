@@ -10,10 +10,7 @@ namespace cs2_randomizer
     {
         public const string knife_weaponName = "weapon_knife";
         public const string bomb_weaponName = "weapon_c4";
-        public const string defuser_weaponName = "weapon_defuser";
-
-
-
-
+        public const string armorHelmet_weaponName = "item_assaultsuit";
+        public const string armor_weaponName = "item_kevlar";
     }
 }
