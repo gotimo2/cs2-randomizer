@@ -13,7 +13,10 @@ namespace cs2_randomizer
         [GameEventHandler]
         public HookResult OnRoundStart(EventRoundStart gameEvent)
         {
-
+            if (Plugin.RandomizerEnabled)
+            {
+                GivePlayersRandomWeapons();
+            }
             return HookResult.Continue;
         }
 
@@ -25,8 +28,9 @@ namespace cs2_randomizer
 
             foreach (var player in players)
             {
-                var weapons =
-                player.GiveNamedItem()
+                var weapon = weapons[random.Next(weapons.Count - 1)];
+                player.RemoveAllItemsOnNextRoundReset = true;
+                player.GiveNamedItem(weapon);
             }
 
         }

@@ -2,6 +2,7 @@
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
+using Microsoft.Extensions.Logging;
 
 public class Plugin : BasePlugin
 {
@@ -13,9 +14,9 @@ public class Plugin : BasePlugin
 
     public override void Load(bool hotReload)
     {
-        Console.WriteLine($"CS2 Randomizer {(hotReload ? "hot " : "")}Loaded !");
+        Logger.LogInformation($"CS2 Randomizer {(hotReload ? "hot " : "")}Loaded !");
+        RegisterConsoleCommandAttributeHandlers(new Commands(Logger));
+        base.Load(hotReload);
     }
-
-
 
 }
