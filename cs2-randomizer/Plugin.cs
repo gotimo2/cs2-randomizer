@@ -1,6 +1,6 @@
 ﻿namespace cs2_randomizer;
 
-public class Class1
+public class Plugin
 {
 
 }
