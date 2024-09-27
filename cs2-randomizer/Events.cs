@@ -34,7 +34,10 @@ namespace cs2_randomizer
         [GameEventHandler]
         public HookResult OnGrenadeThrow(EventGrenadeThrown gameEvent, GameEventInfo eventInfo)
         {
-            _logger.LogInformation("grenade thrown " + JsonSerializer.Serialize(gameEvent));
+            Random random = new();
+            var rolledNade = Utils.Grenades[random.Next(0, Utils.Grenades.Count)];
+
+            
             return HookResult.Continue;
         }
 

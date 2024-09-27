@@ -1,4 +1,6 @@
-﻿using CounterStrikeSharp.API.Core;
+﻿using CounterStrikeSharp.API;
+using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -39,8 +41,9 @@ namespace cs2_randomizer
                         player.GiveNamedItem(Constants.bomb_weaponName);
                     }
                 }
-                var weapon = weapons[random.Next(weapons.Count - 1)];
+                var weapon = weapons[random.Next(weapons.Count)];
                 RollArmor(player);
+                RollGrenades(player);
                 player.GiveNamedItem(weapon);
                 player.GiveNamedItem(Constants.knife_weaponName);
             }
@@ -79,6 +82,11 @@ namespace cs2_randomizer
         private void RollGrenades(CCSPlayerController player)
         {
             Random random = new();
+            var amount = random.Next(0, 4);
+            for (int i = 0; i < amount; i++) { 
+                var item = Utils.Grenades[random.Next(0, Utils.Grenades.Count)];
+                player.GiveNamedItem(item);
+            }
         }
 
     }
