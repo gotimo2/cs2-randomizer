@@ -13,6 +13,9 @@ namespace cs2_randomizer
     {
        public static List<string> Weapons { get => new List<string>(_weapons); }
 
+       public static List<string> Grenades { get => new List<string>(_grenades); }
+
+
        public static IEnumerable<CCSPlayerController> GetAllPlayers()
        {
            List<CCSPlayerController> players = new List<CCSPlayerController>();
@@ -27,7 +30,7 @@ namespace cs2_randomizer
            return players;
        }
 
-       private static List<string> _weapons = new List<string>{
+       private static string[] _weapons = [
            "weapon_m4a4",
            "weapon_m4a1_silencer",
            "weapon_famas",
@@ -62,6 +65,15 @@ namespace cs2_randomizer
            "weapon_m249",
            "weapon_negev",
            "weapon_taser"
-           };
+           ];
+
+        private static string[] _grenades = [
+            "weapon_decoy",
+            "weapon_flashbang",
+            "weapon_smokegrenade",
+            "weapon_hegrenade",
+            "weapon_molotov",
+            "weapon_incgrenade"
+            ];
     }
 }

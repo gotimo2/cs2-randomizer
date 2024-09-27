@@ -23,6 +23,7 @@ namespace cs2_randomizer
             foreach (var player in players)
             {
                 player.RemoveWeapons();
+                StripMoney(player);
 
                 if (player.TeamNum == 3) //CT side
                 {
@@ -67,6 +68,17 @@ namespace cs2_randomizer
                     player.GiveNamedItem(Constants.armorHelmet_weaponName);
                     return;
             }
+        }
+
+        private void StripMoney(CCSPlayerController player)
+        {
+            var buyServices = player.InGameMoneyServices;
+            buyServices.Account = 0;
+        }
+
+        private void RollGrenades(CCSPlayerController player)
+        {
+            Random random = new();
         }
 
     }

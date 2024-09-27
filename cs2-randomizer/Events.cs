@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace cs2_randomizer
@@ -27,6 +28,13 @@ namespace cs2_randomizer
             {
                 randomizer.RandomizeLoadouts();
             }
+            return HookResult.Continue;
+        }
+
+        [GameEventHandler]
+        public HookResult OnGrenadeThrow(EventGrenadeThrown gameEvent, GameEventInfo eventInfo)
+        {
+            _logger.LogInformation("grenade thrown " + JsonSerializer.Serialize(gameEvent));
             return HookResult.Continue;
         }
 
