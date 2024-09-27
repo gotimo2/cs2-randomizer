@@ -11,7 +11,25 @@ namespace cs2_randomizer
 {
     public static class Utils
     {
-        public static List<string> Weapons { get => new List<string>{
+
+
+        public static List<string> Weapons { get => new List<string>(_weapons); }
+
+        public static IEnumerable<CCSPlayerController> GetAllPlayers()
+        {
+            List<CCSPlayerController> players = new List<CCSPlayerController>();
+            for(int i = 0; i < Server.MaxPlayers; i++)
+            {
+                var p = Utilities.GetPlayerFromSlot(i);
+                if (p is not null && p.IsValid)
+                {
+                    players.Add(p);
+                }
+            }
+            return players;
+        }
+
+        private static List<string> _weapons = new List<string>{
             "weapon_m4a4",
             "weapon_m4a1_silencer",
             "weapon_famas",
@@ -46,20 +64,6 @@ namespace cs2_randomizer
             "weapon_m249",
             "weapon_negev",
             "weapon_taser"
-            }; }
-
-        public static IEnumerable<CCSPlayerController> GetAllPlayers()
-        {
-            List<CCSPlayerController> players = new List<CCSPlayerController>();
-            for(int i = 0; i < Server.MaxPlayers; i++)
-            {
-                var p = Utilities.GetPlayerFromSlot(i);
-                if (p is not null && p.IsValid)
-                {
-                    players.Add(p);
-                }
-            }
-            return players;
-        }
+            };
     }
 }

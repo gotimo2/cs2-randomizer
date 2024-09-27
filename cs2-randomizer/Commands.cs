@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace cs2_randomizer
 {
-    internal class Commands
+    public class Commands
     {
         [ConsoleCommand("enable_randomizer", "Enables the randomizer plugin")]
         [CommandHelper((int)CommandUsage.SERVER_ONLY)]
