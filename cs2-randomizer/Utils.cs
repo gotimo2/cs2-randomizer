@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CounterStrikeSharp.API;
+using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,5 +47,19 @@ namespace cs2_randomizer
             "weapon_negev",
             "weapon_taser"
             }; }
+
+        public static IEnumerable<CCSPlayerController> GetAllPlayers()
+        {
+            List<CCSPlayerController> players = new List<CCSPlayerController>();
+            for(int i = 0; i < Server.MaxPlayers; i++)
+            {
+                var p = Utilities.GetPlayerFromSlot(i);
+                if (p is not null && p.IsValid)
+                {
+                    players.Add(p);
+                }
+            }
+            return players;
+        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿namespace cs2_randomizer;
-using CounterStrikeSharp;
 using CounterStrikeSharp.API.Core;
 
 public class Plugin : BasePlugin
