@@ -24,11 +24,11 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore 
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore --configuration Release
       - name: upload artifacts
         uses: actions/upload-artifact@v4
         with: 
           name: cs2randomizer.zip
-          path: bin/release/net8.0/*.*
+          path: /home/runner/work/cs2-randomizer/cs2-randomizer/cs2-randomizer/bin/Release/net8.0/*.*
       
     
