@@ -13,13 +13,19 @@ namespace cs2_randomizer
     public class Randomizer
     {
         private ILogger _logger;
-        public Randomizer(ILogger logger) {
+        private Random _random;
+        public Randomizer(ILogger logger, Random random = null)
+        {
             _logger = logger;
+            _random = random;
+            if (random is null)
+            {
+                _random = new Random();
+            }
         }
         public void RandomizeLoadouts()
         {
             var players = Utils.GetAllPlayers();
-            var random = new Random();
             var weapons = Utils.Weapons;
 
             foreach (var player in players)
@@ -29,19 +35,19 @@ namespace cs2_randomizer
 
                 if (player.TeamNum == 3) //CT side
                 {
-                    if (random.Next(0, 2) == 1)
+                    if (_random.Next(0, 2) == 1)
                     {
                         giveDefuser(player);
                     }
                 }
                 if (player.TeamNum == 2) //T side
                 {
-                    if (random.Next(0, 2) == 1)
+                    if (_random.Next(0, 2) == 1)
                     {
                         player.GiveNamedItem(Constants.bomb_weaponName);
                     }
                 }
-                var weapon = weapons[random.Next(weapons.Count)];
+                var weapon = weapons[_random.Next(weapons.Count)];
                 RollArmor(player);
                 RollGrenades(player);
                 player.GiveNamedItem(weapon);
@@ -58,8 +64,7 @@ namespace cs2_randomizer
 
         private void RollArmor(CCSPlayerController player)
         {
-            Random random = new();
-            int result = random.Next(0, 3);
+            int result = _random.Next(0, 3);
             switch (result)
             {
                 case 0:
@@ -81,10 +86,9 @@ namespace cs2_randomizer
 
         private void RollGrenades(CCSPlayerController player)
         {
-            Random random = new();
-            var amount = random.Next(0, 4);
+            var amount = _random.Next(0, 4);
             for (int i = 0; i < amount; i++) { 
-                var item = Utils.Grenades[random.Next(0, Utils.Grenades.Count)];
+                var item = Utils.Grenades[_random.Next(0, Utils.Grenades.Count)];
                 player.GiveNamedItem(item);
             }
         }
