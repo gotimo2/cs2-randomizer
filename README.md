@@ -8,6 +8,13 @@ Do you love GAMBLING??????
 
 With CS2 randomizer, you can turn your Counter-Strike 2 experience into a team-versus-team slot machine!
 Simply install the plugin, and invite your friends over for a game of ~~suffering~~ PURE THRILLS!
+
+With such killer features as
+ - A random weapon for every player, every round! Will you get an AK-47 or a zeus? Who knows!
+ - Random Bombs and defuse kits! Every Terrorist gets to do a coin-flip for a bomb and every CT gets to gamble for a defuser!
+ - Random grenades will give you between zero and four randomly picked grenades every round!
+ - Random armor means you either have nothing, a vest or all that and a helmet!
+
 ### Installation
 
 To install CS2 randomizer, you need the following:
