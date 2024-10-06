@@ -6,8 +6,8 @@ name: .NET
 on: 
   workflow_dispatch:
     inputs:
-      tags:
-        description: 'tags for the releasse'
+      tag:
+        description: 'tag for the releasse'
         required: true
         default: latest
         type: text
