@@ -11,6 +11,8 @@ on:
         required: true
         default: latest
         type: string
+permissions:
+  contents: write
 
 jobs:
   build:
