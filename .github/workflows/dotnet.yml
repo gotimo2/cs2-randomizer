@@ -3,11 +3,14 @@
 
 name: .NET
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: 
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'tags for the releasse'
+        required: true
+        default: latest
+        type: text
 
 jobs:
   build:
@@ -30,5 +33,11 @@ jobs:
         with: 
           name: cs2randomizer.zip
           path: /home/runner/work/cs2-randomizer/cs2-randomizer/cs2-randomizer/bin/Release/net8.0/*.*
+      - name: create release
+        uses: cipollo/release-action@v1.14.0
+        with: 
+          artifacts: "cs2randomizer.zip"
+          
+            
       
     
