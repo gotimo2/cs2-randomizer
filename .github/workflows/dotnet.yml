@@ -4,9 +4,13 @@
 name: .NET
 
 on: 
-  push:
-    tags:
-    - '*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'tag for the releasse'
+        required: true
+        default: latest
+        type: string
 
 jobs:
   build:
@@ -33,6 +37,7 @@ jobs:
         uses: ncipollo/release-action@v1.14.0
         with: 
           artifacts: "cs2randomizer.zip"
+          tag: ${{ inputs.tag }}
           
             
       
