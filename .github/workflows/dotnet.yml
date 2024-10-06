@@ -4,13 +4,9 @@
 name: .NET
 
 on: 
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'tag for the releasse'
-        required: true
-        default: latest
-        type: text
+  push:
+    tags:
+    - '*'
 
 jobs:
   build:
