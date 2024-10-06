@@ -38,6 +38,7 @@ jobs:
         with: 
           artifacts: "cs2randomizer.zip"
           tag: ${{ inputs.tag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           
             
       
