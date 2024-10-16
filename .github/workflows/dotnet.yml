@@ -38,7 +38,7 @@ jobs:
       - name: create release
         uses: ncipollo/release-action@v1.14.0
         with: 
-          artifacts: cs2randomizer.zip
+          artifacts: ${{ github.workspace }}/ci-artifacts/cs2randomizer.zip
           tag: ${{ inputs.tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
           
