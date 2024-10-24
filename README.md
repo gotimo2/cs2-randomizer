@@ -23,3 +23,5 @@ To install CS2 randomizer, you need the following:
 -  [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 
 After those are installed, you can grab the plugin from [Releases](https://github.com/gotimo2/cs2-randomizer/releases/tag/1.0) and simply add a `cs2-randomizer` folder under `game/csgo/addons/counterstrikesharp/plugins/` and unpack the plugin there.
+
+After that the randomizer will be active as soon as the round starts, but if you're boring you can use `disable_randomizer` to disable the plugin.

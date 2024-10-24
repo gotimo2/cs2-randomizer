@@ -3,11 +3,16 @@
 
 name: .NET
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: 
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'tag for the releasse'
+        required: true
+        default: latest
+        type: string
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -30,5 +35,13 @@ jobs:
         with: 
           name: cs2randomizer.zip
           path: /home/runner/work/cs2-randomizer/cs2-randomizer/cs2-randomizer/bin/Release/net8.0/*.*
+      - name: create release
+        uses: ncipollo/release-action@v1.14.0
+        with: 
+          artifacts: ${{ github.workspace }}/ci-artifacts/cs2randomizer.zip
+          tag: ${{ inputs.tag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+            
       
     
