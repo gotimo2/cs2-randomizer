@@ -14,15 +14,12 @@ namespace cs2_randomizer
     {
         private ILogger _logger;
         private Random _random;
-        public Randomizer(ILogger logger, Random random = null)
+        public Randomizer(ILogger logger, Random? random = null)
         {
             _logger = logger;
-            _random = random;
-            if (random is null)
-            {
-                _random = new Random();
-            }
+            _random = random ?? new Random();
         }
+
         public void RandomizeLoadouts()
         {
             var players = Utils.GetAllPlayers();
@@ -44,14 +41,14 @@ namespace cs2_randomizer
                 {
                     if (_random.Next(0, 2) == 1)
                     {
-                        player.GiveNamedItem(Constants.bomb_weaponName);
+                        player.GiveNamedItem(Constants.bombWeaponName);
                     }
                 }
-                var weapon = weapons[_random.Next(weapons.Count)];
+                var weapon = weapons[_random.Next(weapons.Length)];
                 RollArmor(player);
                 RollGrenades(player);
                 player.GiveNamedItem(weapon);
-                player.GiveNamedItem(Constants.knife_weaponName);
+                player.GiveNamedItem(Constants.knifeWeaponName);
             }
 
         }
@@ -70,10 +67,10 @@ namespace cs2_randomizer
                 case 0:
                     return;
                 case 1:
-                    player.GiveNamedItem(Constants.armor_weaponName);
+                    player.GiveNamedItem(Constants.armorWeaponName);
                     return;
                 case 2:
-                    player.GiveNamedItem(Constants.armorHelmet_weaponName);
+                    player.GiveNamedItem(Constants.armorHelmetWeaponName);
                     return;
             }
         }
@@ -88,7 +85,7 @@ namespace cs2_randomizer
         {
             var amount = _random.Next(0, 4);
             for (int i = 0; i < amount; i++) { 
-                var item = Utils.Grenades[_random.Next(0, Utils.Grenades.Count)];
+                var item = Utils.Grenades[_random.Next(0, Utils.Grenades.Length)];
                 player.GiveNamedItem(item);
             }
         }

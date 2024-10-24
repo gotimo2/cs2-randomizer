@@ -31,16 +31,6 @@ namespace cs2_randomizer
             return HookResult.Continue;
         }
 
-        [GameEventHandler]
-        public HookResult OnGrenadeThrow(EventGrenadeThrown gameEvent, GameEventInfo eventInfo)
-        {
-            Random random = new();
-            var rolledNade = Utils.Grenades[random.Next(0, Utils.Grenades.Count)];
-
-            
-            return HookResult.Continue;
-        }
-
 
     }
 }

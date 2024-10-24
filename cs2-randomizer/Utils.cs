@@ -1,19 +1,13 @@
 ﻿using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace cs2_randomizer
 {
     public static class Utils
     {
-       public static List<string> Weapons { get => new List<string>(_weapons); }
+       public static string[] Weapons { get => (string[]) _weapons.Clone(); }
 
-       public static List<string> Grenades { get => new List<string>(_grenades); }
+       public static string[] Grenades { get => (string[]) _grenades.Clone(); }
 
 
        public static IEnumerable<CCSPlayerController> GetAllPlayers()
